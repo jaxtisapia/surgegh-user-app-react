@@ -1,0 +1,61 @@
+body{
+    min-height: 100vh;
+    background: #ecf0f1;
+}
+
+.main-body{
+    min-height: 100vh;
+}
+
+.sub-body{
+    padding-top: 20vh;
+    padding-bottom: 20vh;
+    min-height: 70vh;
+}
+
+.vh-padding-20{
+    padding-bottom: 20vh;
+}
+
+.text-info{
+    background: #2d3436;
+    padding: 10px;
+    color: white;
+    font-weight: 100;
+}
+
+/*   ID TARGETING   */
+#account-sub-menu{
+
+}
+/*   END OF ID TARGETING   */
+
+/*  COLORS */
+.bg-ash{
+    background: #ecf0f1;
+}
+
+.bg-green-one{
+    background: #1abc9c;
+}
+
+.bg-green-two{
+    background: #16a085;
+}
+
+.color-white-one{
+    color: white;
+}
+
+/* END OF COLORS*/
+
+.thin-text{
+    font-weight: 100;
+}
+
+.investment-details{
+    background: #676969;
+    font-weight: 100;
+    color: white;
+}
+
