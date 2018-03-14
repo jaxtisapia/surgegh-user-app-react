@@ -1,15 +1,18 @@
 let routes = {
     login:{
-        link:'/login'
+        link:'/login',
+        pathname: "login"
     },
     register:{
-        link:'/register'
+        link:'/register',
+        pathname: "register"
     },
     forgotPassword:{
-        link:'/forgot-password'
+        link:'/forgot-password',
+        pathname: "forgot-password"
     },
     main:{
-        link:'/home',
+        // link:'/home',
         settings:{
             pathname:'settings'
         },
@@ -27,6 +30,15 @@ let routes = {
         },
         home:{
             pathname:'index'
+        },
+        login:{
+            pathname: "login"
+        },
+        register:{
+            pathname: "register"
+        },
+        forgotPassword:{
+            pathname: "forgot-password"
         }
     }
 };

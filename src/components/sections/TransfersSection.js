@@ -7,7 +7,7 @@ export default class TransfersSection extends Component{
 
                 <div className="uk-card uk-card-default uk-card-body uk-margin-medium-top uk-width-1-2@m">
 
-                    <h1 className="uk-heading-line uk-text-center"><span className='thin-text'>Transfers</span></h1>
+                    <h1 className="uk-heading-line uk-text-center"><span className='thin-text'>Completed Transfers</span></h1>
 
                     <div className="uk-overflow-auto">
                         <table className="uk-table uk-table-small uk-table-divider">

@@ -21,7 +21,7 @@ export default class WithdrawSection extends Component{
                         <div className="uk-margin">
                             <label className="uk-form-label" for="mobile-money-number">Mobile Money Number</label>
                             <div className="uk-form-controls">
-                                <input className="uk-input" id="mobile-money-number" type="text" value="0243688339" disabled/>
+                                <input className="uk-input" id="mobile-money-number" type="text" value="02436883739" disabled/>
                             </div>
                         </div>
 

@@ -11,45 +11,68 @@ import TransfersSection from "../sections/TransfersSection";
 
 let homeRoutes = require('../routes/routes').main;
 
-const Main = ({match}) => (
+export default class Main extends Component {
 
-    <div>
-        <Navbar/>
+    constructor(props) {
+        super(props);
 
-        <NavigationRoutes/>
-        <div className="uk-container vh-padding-20">
+        this.state = ({currentPage: ""});
 
-        <Route path={`${match.url}/:homeID`} component={MainRouter}/>
-        <Route exact path={match.url} component={HomeLandingSection}/>
-    </div>
-    </div>
-);
-
-const MainRouter = ({match}) => {
-    switch (match.params.homeID) {
-
-        case homeRoutes.home.pathname:
-            return <HomeLandingSection/>;
-
-        case homeRoutes.settings.pathname:
-            return <AccountSettingsSection/>;
-
-        case homeRoutes.issue.pathname:
-            return <SubmitIssueSection/>;
-
-        case homeRoutes.invest.pathname:
-            return <InvestSection/>;
-
-        case homeRoutes.withdraw.pathname:
-            return <WithdrawSection/>;
-
-        case homeRoutes.transfers.pathname:
-            return <TransfersSection/>;
-
-        default:
-            return <HomeLandingSection/>;
-
+        this.setCurrentPage= this.setCurrentPage.bind(this);
     }
-};
 
-export default Main;
+    setCurrentPage = (page) => {
+        this.setState({ currentPage:page })
+    };
+
+    render() {
+
+        let MainSubPage = null;
+
+        switch (this.state.currentPage) {
+
+            case homeRoutes.home.pathname:
+                MainSubPage = <HomeLandingSection  setCurrentPage={this.setCurrentPage}/>;
+                break;
+
+            case homeRoutes.settings.pathname:
+                MainSubPage = <AccountSettingsSection setCurrentPage={this.setCurrentPage}/>;
+                break;
+
+            case homeRoutes.issue.pathname:
+                MainSubPage = <SubmitIssueSection setCurrentPage={this.setCurrentPage}/>;
+                break;
+
+            case homeRoutes.invest.pathname:
+                MainSubPage = <InvestSection setCurrentPage={this.setCurrentPage}/>;
+                break;
+
+            case homeRoutes.withdraw.pathname:
+                MainSubPage = <WithdrawSection setCurrentPage={this.setCurrentPage}/>;
+                break;
+
+            case homeRoutes.transfers.pathname:
+                MainSubPage = <TransfersSection setCurrentPage={this.setCurrentPage}/>;
+                break;
+
+            default:
+                MainSubPage = <HomeLandingSection setCurrentPage={this.setCurrentPage}/>;
+                break;
+
+        }
+
+        return (
+            <div>
+                <Navbar loggedIn={this.props.loggedIn} setCurrentPage={this.setCurrentPage}/>
+
+                <NavigationRoutes  setCurrentPage={this.setCurrentPage}/>
+                <div className="uk-container vh-padding-20">
+
+                    {MainSubPage}
+
+                </div>
+            </div>
+        )
+    }
+}
+

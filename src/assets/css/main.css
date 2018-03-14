@@ -35,8 +35,12 @@ body{
     background: #ecf0f1;
 }
 
+.bg-ash-two{
+    background: #bbb;
+}
+
 .bg-green-one{
-    background: #1abc9c;
+    background: #219451;
 }
 
 .bg-green-two{
@@ -59,3 +63,39 @@ body{
     color: white;
 }
 
+.login-title {
+    font-weight: 100;
+    margin-bottom: 50px;
+}
+
+.login-image {
+    width: 256px;
+    height: 256px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.navbar-logo-image {
+    width: 56px;
+    height: 56px;
+}
+
+.forgot-password-description {
+    padding: 20px;
+    background: #949b9c;
+}
+
+.pending-item {
+    padding: 30px;
+    margin-bottom: 20px;
+}
+
+.pending-donation-title {
+    text-transform: uppercase;
+    font-size: 1.5em;
+    font-weight: 100;
+}
+
+.pending-donation-id{
+    font-size: 0.8em;
+}

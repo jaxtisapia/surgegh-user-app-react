@@ -6,18 +6,42 @@ let routes = require('../routes/routes');
 let mainRoute = routes.main.link;
 let homeRoutes = routes.main;
 
-export default class NavigationRoutes extends Component{
-    render(){
+export default class NavigationRoutes extends Component {
+
+    constructor(props) {
+        super(props);
+    }
+
+    render() {
         return (
             <div className="uk-container uk-padding-small">
-                {console.log(homeRoutes)}
+
                 <div className="uk-flex uk-flex-center">
                     <ul className="uk-breadcrumb">
-                        <li><Link to={`${mainRoute}/${homeRoutes.home.pathname}`}>Home</Link></li>
-                        <li><Link to={`${mainRoute}/${homeRoutes.invest.pathname}`}>Invest</Link></li>
-                        <li><Link to={`${mainRoute}/${homeRoutes.withdraw.pathname}`}>Withdraw</Link></li>
-                        <li><Link to={`${mainRoute}/${homeRoutes.transfers.pathname}`}>Transfers</Link></li>
+                        {/*<li onClick={()=>this.props.setCurrentPage(homeRoutes.home.pathname)}><Link to={`${mainRoute}/${homeRoutes.home.pathname}`}>Home</Link></li>*/}
+                        <li onClick={()=> {this.props.setCurrentPage(homeRoutes.home.pathname)}}>
+                            {/*<Link onClick={() => {this.props.setCurrentPage(homeRoutes.home.pathname)}}>*/}
+                                Home
+                            {/*</Link>*/}
+                        </li>
+                        <li onClick={()=> {this.props.setCurrentPage(homeRoutes.invest.pathname)}}>
+                            {/*<Link to={`${mainRoute}/${homeRoutes.invest.pathname}`}>*/}
+                                Donate Now
+                            {/*</Link>*/}
+                        </li>
+                        <li onClick={()=> {this.props.setCurrentPage(homeRoutes.transfers.pathname)}}>
+                            {/*<Link to={`${mainRoute}/${homeRoutes.transfers.pathname}`}>*/}
+                                Transfers
+                            {/*</Link>*/}
+                        </li>
+                        <li  onClick={()=> {this.props.setCurrentPage(homeRoutes.issue.pathname)}}>
+                            {/*<Link to={`${mainRoute}/${homeRoutes.issue.pathname}`}>*/}
+                                Contact Us
+                            {/*</Link>*/}
+                        </li>
                     </ul>
                 </div>
-                </div>
-        )}}
+            </div>
+        )
+    }
+}
