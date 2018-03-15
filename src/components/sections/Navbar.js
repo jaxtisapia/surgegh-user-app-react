@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import  {Link} from 'react-router-dom';
 import logo from '../../assets/img/logo.png';
+import Ionicon from "react-ionicons";
 
 let routes = require('../routes/routes');
 let mainRoute = routes.main.link;
@@ -33,7 +34,8 @@ export default class Navbar extends Component{
                             <ul className="uk-navbar-nav">
                                 <li className="uk-active"><a href="">
                                     <img className="navbar-logo-image " src={logo}/>
-                                    SurgeGH
+                                    {/*TODO create css for style. i dont know why the fuck im taking my time to write a TODO instead of doin it*/}
+                                    <span style={{ paddingLeft: '10px'}}>SurgeGH</span>
                                 </a></li>
                             </ul>
                         </div>
@@ -42,12 +44,12 @@ export default class Navbar extends Component{
                     <div className="uk-navbar-right uk-margin-large-right">
                         <ul className="uk-navbar-nav">
                             <li>
-                                {/*<a href={`${mainRoute}/${homeRoutes.settings.pathname}`}>*/}
                                 <a onClick={this.toggleUserMenu}>
-                                    <span className="uk-icon uk-margin-small-right" uk-icon="icon: user"/>
-                                    <Ionicon icon="ios-alert" rotate={true} fontSize="35px" color="blue"/>
-
+                                    <Ionicon icon="ios-contact-outline" fontSize="35px"/>
+                                    {/*TODO create css for style. i dont know why the fuck im taking my time to write a TODO instead of doin it*/}
+                                    <span style={{ paddingLeft: '10px'}} className="uk-visible@s">
                                     My Account
+                                        </span>
                                 </a>
 
                             </li>

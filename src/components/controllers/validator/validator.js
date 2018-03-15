@@ -2,6 +2,7 @@ const spamEmails = require("./spamEmails").spamEmails;
 
 const validatorConfig = require("../../configuration/configuration").validator;
 const phoneValidatorConfig = validatorConfig.phone;
+const nameValidatorConfig = validatorConfig.fullName;
 const usernameValidatorConfig = validatorConfig.username;
 const passwordValidatorConfig = validatorConfig.password;
 
@@ -52,6 +53,11 @@ const isEmailSpam = (email) => {
     return (spamEmails.indexOf(domain) > -1);
 };
 
+const isValidName = (name) => {
+    return (isStringMinLength(name, nameValidatorConfig.minLength)
+        && isStringMaxLength(name, nameValidatorConfig.maxLength))
+};
+
 module.exports ={
     isNumberOnly,
     isStringMinLength,
@@ -60,6 +66,6 @@ module.exports ={
     isValidPassword,
     isValidPhone,
     isValidEmail,
-    isEmailSpam
-
+    isEmailSpam,
+    isValidName
 };

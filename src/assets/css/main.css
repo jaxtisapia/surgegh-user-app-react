@@ -39,6 +39,10 @@ body{
     background: #bbb;
 }
 
+.bg-ash-three{
+    background: #cdd0d0 !important;
+}
+
 .bg-green-one{
     background: #219451;
 }
@@ -49,6 +53,14 @@ body{
 
 .color-white-one{
     color: white;
+}
+
+.color-black-one{
+    color: black;
+}
+
+.color-highlight-one {
+    color: #ffd6d6;
 }
 
 /* END OF COLORS*/
@@ -98,4 +110,10 @@ body{
 
 .pending-donation-id{
     font-size: 0.8em;
+}
+
+.loader-surface {
+    height: 120px;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }

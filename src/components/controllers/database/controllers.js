@@ -9,7 +9,7 @@ const localDatabase = low(adapter);
 // Set some defaults
 const defaultValues = {};
 defaultValues[`${dbModels.session.id}`] = dbModels.session.default;
-defaultValues[`${dbModels.user.id}`] = dbModels.session.default;
+defaultValues[`${dbModels.user.id}`] = dbModels.user.default;
 defaultValues[`${dbModels.pendingDonations.id}`] = dbModels.pendingDonations.default;
 defaultValues[`${dbModels.invoices.id}`] = dbModels.invoices.default;
 defaultValues[`${dbModels.networks.id}`] = dbModels.networks.default;
@@ -20,8 +20,12 @@ localDatabase.defaults(defaultValues).write();
 /** user functions **/
 const logoutUser = () => {
     // remove all instances of 'user', 'session', 'pendingDonations', 'invoices'
-    localDatabase.defaults(defaultValues).write();
-
+    localDatabase.set(dbModels.session.id, dbModels.session.default).write();
+    localDatabase.set(dbModels.user.id, dbModels.user.default).write();
+    localDatabase.set(dbModels.pendingDonations.id, dbModels.pendingDonations.default).write();
+    localDatabase.set(dbModels.invoices.id, dbModels.invoices.default).write();
+    localDatabase.set(dbModels.networks.id, dbModels.networks.default).write();
+    localDatabase.set(dbModels.investments.id, dbModels.investments.default).write();
 };
 
 const getUser = () => {
@@ -63,14 +67,21 @@ const updateInvestmentPackages = (investments) => {
 const getPendingDonations = () => {
     return localDatabase.get(dbModels.pendingDonations.id).value();
 };
-const updatePendingDonations = () => {
+
+const updatePendingDonations = (donations) => {
+    localDatabase.set(dbModels.pendingDonations.id, dbModels.pendingDonations.default).write();
+    localDatabase.set(dbModels.pendingDonations.id, donations).write();
+
 };
 
 /** completed invoices functions **/
 const getInvoices = () => {
     return localDatabase.get(dbModels.invoices.id).value();
 };
-const updateInvoices = () => {
+
+const updateInvoices = (invoices) => {
+    // localDatabase.set(dbModels.invoices.id, []).write();
+    localDatabase.set(dbModels.invoices.id, invoices).write();
 };
 
 module.exports =  {

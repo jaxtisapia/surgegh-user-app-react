@@ -9,7 +9,7 @@ const dbModels = {
     },
     pendingDonations: {
         id: "pendingDonations",
-        default:[]
+        default:{}
     },
     invoices: {
         id: "invoices",

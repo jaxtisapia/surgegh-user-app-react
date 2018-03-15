@@ -15,11 +15,11 @@ export default class NoPendingDonation extends Component{
 
                 <div className="uk-flex uk-flex-center">
 
-                    <Link to={`${mainRoute}/${homeRoutes.invest.pathname}`}>
-                    <button className="uk-button bg-green-one color-white-one uk-width-1-1">
+                    {/*<Link to={`${mainRoute}/${homeRoutes.invest.pathname}`}>*/}
+                    <button onClick={()=>{this.props.setCurrentPage(homeRoutes.invest.pathname)}} className="uk-button bg-green-one color-white-one uk-width-1-1">
                             Donate Now
                         </button>
-                    </Link>
+                    {/*</Link>*/}
 
                 </div>
 

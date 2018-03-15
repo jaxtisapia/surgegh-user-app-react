@@ -77,7 +77,7 @@ export default class Login extends Component {
                 this.deactivateLoading();
                 console.log(err);
 
-                let error = "Unable to login. Please verify you have verified username and password, and check your internet connectivity!"
+                let error = "Unable to login. Please check your internet connectivity!";
 
                 try {
                     error = err.response.data.message

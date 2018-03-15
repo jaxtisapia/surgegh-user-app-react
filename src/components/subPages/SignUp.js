@@ -1,10 +1,22 @@
 import React, {Component} from 'react'
 import {Link} from "react-router-dom";
 import logo from "../../assets/img/logo.png";
-
 import Loadable from "react-loading-overlay";
 
 let homeRoutes = require('../routes/routes').main;
+let Validator = require("../controllers/validator/validator");
+
+let dbController = require("../controllers/database/controllers");
+
+let backendController = require("../controllers/backendConnector/backend");
+let backendSignupUser = backendController.signupUser;
+let handleLoginResponse = backendController.handleLoginRegisterResponse;
+
+const validatorConfig = require("../configuration/configuration").validator;
+const phoneValidatorConfig = validatorConfig.phone;
+const nameValidatorConfig = validatorConfig.fullName;
+const usernameValidatorConfig = validatorConfig.username;
+const passwordValidatorConfig = validatorConfig.password;
 
 export default class SignUp extends Component {
 
@@ -81,13 +93,76 @@ export default class SignUp extends Component {
         e.preventDefault();
 
         const username = this.state.username;
-        const fullName = this.state.fullName;
+        const name = this.state.fullName;
         const password = this.state.password;
         const confirmPassword = this.state.confirmPassword;
         const phone = this.state.phone;
         const email = this.state.email;
 
         this.activateLoading();
+
+        //check username
+        if (!Validator.isValidUsername(username)){
+            this.deactivateLoading();
+            return alert(`Username is invalid. Username should be between ${usernameValidatorConfig.minLength} and ${usernameValidatorConfig.maxLength} characters long`);
+        }
+
+        // check fullName
+        if (!Validator.isValidName(name)){
+            this.deactivateLoading();
+            return alert(`Full name is invalid. Full name should be between ${nameValidatorConfig.minLength} and ${nameValidatorConfig.maxLength} characters long`);
+        }
+
+        // check password
+        if (!Validator.isValidPassword(password)){
+            this.deactivateLoading();
+            return alert(`Invalid Password. Password should be be between ${passwordValidatorConfig.minLength} and ${passwordValidatorConfig.maxLength} characters long`);
+        }
+
+        // check password - confirmpassowrd
+        if (password !== confirmPassword){
+            this.deactivateLoading();
+            return alert("Passwords do not match. Please try again");
+        }
+
+        // check phone
+        if (!Validator.isValidPhone(phone)){
+            this.deactivateLoading();
+            return alert ("Invalid Phone. Phone number must be 10 characters long, composed of only numbers, and starting with a zero")
+        }
+
+        // check email
+        if (!Validator.isValidEmail(email)){
+            this.deactivateLoading();
+            return alert("Please enter a valid email.")
+        }
+
+        // check email spam
+        if (Validator.isEmailSpam(email)){
+            this.deactivateLoading();
+            return alert("Email not accepted. Email with this type of domain is labelled spam. Please use a clean email eg. Gmail, Yahoo")
+        }
+
+        backendSignupUser(username, email, phone, name, password)
+            .then((response) => {
+            this.deactivateLoading();
+            handleLoginResponse(response);
+            this.props.loggedIn(true);
+        })
+            .catch((err) => {
+            this.deactivateLoading();
+            console.log(err);
+
+            let error = "Unable to sign up. Please check your internet connectivity!";
+
+            try {
+                error = err.response.data.message
+            }
+            catch (err) {
+            }
+
+            alert(error);
+        });
     }
 
     render() {
@@ -116,7 +191,7 @@ export default class SignUp extends Component {
                             <form className="uk-form-stacked">
 
                                 <div className="uk-margin">
-                                    <label className="uk-form-label" for="username">Username</label>
+                                    <label className="uk-form-label">Username</label>
                                     <div className="uk-form-controls">
                                         <input className="uk-input" id="username" type="text"
                                                onChange={this.onUsernameChange} value={this.state.username}/>
@@ -124,7 +199,7 @@ export default class SignUp extends Component {
                                 </div>
 
                                 <div className="uk-margin">
-                                    <label className="uk-form-label" for="fullName">Full Name</label>
+                                    <label className="uk-form-label">Full Name</label>
                                     <div className="uk-form-controls">
                                         <input className="uk-input" id="fullName" type="text"
                                                onChange={this.onFullNameChange} value={this.state.fullName}/>
@@ -132,7 +207,7 @@ export default class SignUp extends Component {
                                 </div>
 
                                 <div className="uk-margin">
-                                    <label className="uk-form-label" for="email">Email</label>
+                                    <label className="uk-form-label">Email</label>
                                     <div className="uk-form-controls">
                                         <input className="uk-input" id="email" type="text" onChange={this.onEmailChange}
                                                value={this.state.email}/>
@@ -140,7 +215,7 @@ export default class SignUp extends Component {
                                 </div>
 
                                 <div className="uk-margin">
-                                    <label className="uk-form-label" for="phone">Phone Number</label>
+                                    <label className="uk-form-label">Phone Number</label>
                                     <div className="uk-form-controls">
                                         <input className="uk-input" id="phone" type="text" onChange={this.onPhoneChange}
                                                value={this.state.phone}/>
@@ -148,7 +223,7 @@ export default class SignUp extends Component {
                                 </div>
 
                                 <div className="uk-margin">
-                                    <label className="uk-form-label" for="password">Password</label>
+                                    <label className="uk-form-label">Password</label>
                                     <div className="uk-form-controls">
                                         <input className="uk-input" id="password" type="password"
                                                onChange={this.onPasswordChange} value={this.state.password}/>
@@ -156,7 +231,7 @@ export default class SignUp extends Component {
                                 </div>
 
                                 <div className="uk-margin">
-                                    <label className="uk-form-label" for="confirm-password">Confirm Password</label>
+                                    <label className="uk-form-label">Confirm Password</label>
                                     <div className="uk-form-controls">
                                         <input className="uk-input" id="confirm-password" type="password"
                                                onChange={this.onConfirmPasswordChange}

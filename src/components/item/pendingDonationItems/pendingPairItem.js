@@ -5,7 +5,7 @@ export default class PendingPairItem extends Component{
         return (
             <div className="pending-item uk-background-muted">
 
-                <p className="pending-donation-id">Donation ID: rtyrtryt6576-buyiuyy77-utvuy</p>
+                <p className="pending-donation-id">Donation ID: {this.props._id}</p>
 
                 <p className="pending-donation-title">Waiting to be paired</p>
 
@@ -13,7 +13,7 @@ export default class PendingPairItem extends Component{
 
                 <div className="uk-flex uk-flex-center">
 
-                    <button className="uk-button bg-ash-two uk-width-1-2">
+                    <button className="uk-button bg-ash-two uk-width-1-1">
                         Report Issue
                     </button>
                 </div>
