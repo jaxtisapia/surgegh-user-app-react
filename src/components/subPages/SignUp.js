@@ -104,43 +104,43 @@ export default class SignUp extends Component {
         //check username
         if (!Validator.isValidUsername(username)){
             this.deactivateLoading();
-            return alert(`Username is invalid. Username should be between ${usernameValidatorConfig.minLength} and ${usernameValidatorConfig.maxLength} characters long`);
+            return alert(`ERROR: Username is invalid. Username should be between ${usernameValidatorConfig.minLength} and ${usernameValidatorConfig.maxLength} characters long`);
         }
 
         // check fullName
         if (!Validator.isValidName(name)){
             this.deactivateLoading();
-            return alert(`Full name is invalid. Full name should be between ${nameValidatorConfig.minLength} and ${nameValidatorConfig.maxLength} characters long`);
+            return alert(`ERROR: Full name is invalid. Full name should be between ${nameValidatorConfig.minLength} and ${nameValidatorConfig.maxLength} characters long`);
         }
 
         // check password
         if (!Validator.isValidPassword(password)){
             this.deactivateLoading();
-            return alert(`Invalid Password. Password should be be between ${passwordValidatorConfig.minLength} and ${passwordValidatorConfig.maxLength} characters long`);
+            return alert(`ERROR: Invalid Password. Password should be be between ${passwordValidatorConfig.minLength} and ${passwordValidatorConfig.maxLength} characters long`);
         }
 
         // check password - confirmpassowrd
         if (password !== confirmPassword){
             this.deactivateLoading();
-            return alert("Passwords do not match. Please try again");
+            return alert("ERROR: Passwords do not match. Please try again");
         }
 
         // check phone
         if (!Validator.isValidPhone(phone)){
             this.deactivateLoading();
-            return alert ("Invalid Phone. Phone number must be 10 characters long, composed of only numbers, and starting with a zero")
+            return alert ("ERROR: Invalid Phone. Phone number must be 10 characters long, composed of only numbers, and starting with a zero")
         }
 
         // check email
         if (!Validator.isValidEmail(email)){
             this.deactivateLoading();
-            return alert("Please enter a valid email.")
+            return alert("ERROR: Please enter a valid email.")
         }
 
         // check email spam
         if (Validator.isEmailSpam(email)){
             this.deactivateLoading();
-            return alert("Email not accepted. Email with this type of domain is labelled spam. Please use a clean email eg. Gmail, Yahoo")
+            return alert("ERROR: Email not accepted. Email with this type of domain is labelled spam. Please use a clean email eg. Gmail, Yahoo")
         }
 
         backendSignupUser(username, email, phone, name, password)
@@ -161,7 +161,7 @@ export default class SignUp extends Component {
             catch (err) {
             }
 
-            alert(error);
+                alert(`ERROR: ${error}`);
         });
     }
 

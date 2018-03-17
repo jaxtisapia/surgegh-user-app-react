@@ -32,7 +32,7 @@ export default class PendingPaymentItem extends Component {
 
         backendPayDonation(pairingID, investmentID).then((response) => {
             this.deactivateLoading();
-            alert("Invoice sent by SMS. Please confirm to pay!");
+            alert("SUCCESS: Invoice sent by SMS. Please confirm to pay!");
         }).catch((err)=>{
             this.deactivateLoading();
 
@@ -44,7 +44,7 @@ export default class PendingPaymentItem extends Component {
             catch (err) {
             }
 
-            alert(error);
+            alert(`ERROR: ${error}`);
         })
     }
 
@@ -78,9 +78,9 @@ export default class PendingPaymentItem extends Component {
                         Pay Now
                     </button>
 
-                    <button className="uk-margin-bottom uk-button bg-ash-two uk-width-1-1">
-                        Report Issue
-                    </button>
+                    {/*<button className="uk-margin-bottom uk-button bg-ash-two uk-width-1-1">*/}
+                        {/*Report Issue*/}
+                    {/*</button>*/}
                 </div>
 
             </div>

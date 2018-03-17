@@ -39,7 +39,7 @@ export default class AccountSettingsSection extends Component {
         backendUpdateProfile(name).then((response) => {
             // TODO update the database record
             this.deactivateLoading();
-            alert(response);
+            alert(`SUCCESS: ${response}`);
 
             // update the database "user"
             const user = getUser();
@@ -59,7 +59,7 @@ export default class AccountSettingsSection extends Component {
             catch (err) {
             }
 
-            alert(error);
+            alert(`ERROR: ${error}`);
         })
     }
 

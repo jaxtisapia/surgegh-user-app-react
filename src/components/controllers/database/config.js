@@ -3,6 +3,10 @@ const dbModels = {
         id: "session",
         default:{}
     },
+    demo: {
+        id: "demo",
+        default: false
+    },
     user: {
         id: "user",
         default:{}

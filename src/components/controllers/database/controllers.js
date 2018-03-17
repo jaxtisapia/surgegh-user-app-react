@@ -9,6 +9,7 @@ const localDatabase = low(adapter);
 // Set some defaults
 const defaultValues = {};
 defaultValues[`${dbModels.session.id}`] = dbModels.session.default;
+defaultValues[`${dbModels.demo.id}`] = dbModels.demo.default;
 defaultValues[`${dbModels.user.id}`] = dbModels.user.default;
 defaultValues[`${dbModels.pendingDonations.id}`] = dbModels.pendingDonations.default;
 defaultValues[`${dbModels.invoices.id}`] = dbModels.invoices.default;
@@ -36,6 +37,13 @@ const updateUser = (user) => {
     localDatabase.set(dbModels.user.id, user).write();
 };
 
+const getDemoMode = ()=> {
+    return localDatabase.get(dbModels.demo.id).value();
+};
+
+const updateDemoMode = (boolean) => {
+    localDatabase.set(dbModels.demo.id, boolean ).write();
+};
 
 /** session functions **/
 const getSession = () => {
@@ -88,6 +96,8 @@ module.exports =  {
     logoutUser,
     getUser,
     updateUser,
+    getDemoMode,
+    updateDemoMode,
     getSession,
     updateSession,
     getNetworks,

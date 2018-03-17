@@ -1,7 +1,8 @@
 {
-  "name": "jaxtis-freelancer-react-website",
+  "name": "surgegh-user-app-react",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://app.surgegh.com",
   "dependencies": {
     "axios": "^0.18.0",
     "lowdb": "^1.0.0",
@@ -16,7 +17,11 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "deploy": "npm run build&&gh-pages --remote github -d build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "gh-pages": "^1.1.0"
   }
 }

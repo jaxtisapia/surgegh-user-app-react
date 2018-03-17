@@ -11,7 +11,7 @@ export default class NoPendingDonation extends Component{
 
                 <p className="pending-donation-title">You have no pending Donations</p>
 
-                <p className="thin-text">Some cool text here!</p>
+                <p className="thin-text">You can start donating to the community with simple clicks.</p>
 
                 <div className="uk-flex uk-flex-center">
 

@@ -54,7 +54,7 @@ export default class TransfersSection extends Component {
             catch (err) {
             }
 
-            alert(error);
+            alert(`ERROR: ${error}`);
         })
     }
 

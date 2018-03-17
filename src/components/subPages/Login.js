@@ -57,13 +57,13 @@ export default class Login extends Component {
         // check if username is valid
         if (!isValidUsername(username)) {
             this.deactivateLoading();
-            alert("invalid username");
+            alert("ERROR: invalid username");
             return;
         }
 
         // check if password is valid
         if (!isValidPassword(password)) {
-            alert("invalid password");
+            alert("ERROR: invalid password");
             this.deactivateLoading();
             return;
         }
@@ -85,7 +85,7 @@ export default class Login extends Component {
                 catch (err) {
                 }
 
-                alert(error);
+                alert(`ERROR: ${error}`);
             });
 
     }

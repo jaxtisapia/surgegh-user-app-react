@@ -19,22 +19,22 @@ export default class NavigationRoutes extends Component {
                 <div className="uk-flex uk-flex-center">
                     <ul className="uk-breadcrumb">
                         {/*<li onClick={()=>this.props.setCurrentPage(homeRoutes.home.pathname)}><Link to={`${mainRoute}/${homeRoutes.home.pathname}`}>Home</Link></li>*/}
-                        <li onClick={()=> {this.props.setCurrentPage(homeRoutes.home.pathname)}}>
+                        <li className="nav-route-item" onClick={()=> {this.props.setCurrentPage(homeRoutes.home.pathname)}}>
                             {/*<Link onClick={() => {this.props.setCurrentPage(homeRoutes.home.pathname)}}>*/}
                                 Home
                             {/*</Link>*/}
                         </li>
-                        <li onClick={()=> {this.props.setCurrentPage(homeRoutes.invest.pathname)}}>
+                        <li className="nav-route-item" onClick={()=> {this.props.setCurrentPage(homeRoutes.invest.pathname)}}>
                             {/*<Link to={`${mainRoute}/${homeRoutes.invest.pathname}`}>*/}
                                 Donate Now
                             {/*</Link>*/}
                         </li>
-                        <li onClick={()=> {this.props.setCurrentPage(homeRoutes.transfers.pathname)}}>
+                        <li className="nav-route-item" onClick={()=> {this.props.setCurrentPage(homeRoutes.transfers.pathname)}}>
                             {/*<Link to={`${mainRoute}/${homeRoutes.transfers.pathname}`}>*/}
                                 Transfers
                             {/*</Link>*/}
                         </li>
-                        <li  onClick={()=> {this.props.setCurrentPage(homeRoutes.issue.pathname)}}>
+                        <li className="nav-route-item"  onClick={()=> {this.props.setCurrentPage(homeRoutes.issue.pathname)}}>
                             {/*<Link to={`${mainRoute}/${homeRoutes.issue.pathname}`}>*/}
                                 Contact Us
                             {/*</Link>*/}

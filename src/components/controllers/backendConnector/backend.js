@@ -124,6 +124,7 @@ const updateUserProfile = (name) => {
 const handleLoginRegisterResponse = (response) => {
     dbController.updateSession(response.sessionID);
     dbController.updateUser(response.user);
+    dbController.updateDemoMode(response.demoMode);
     dbController.updateInvestmentPackages(response.investments);
     dbController.updateNetworks(response.networks);
 };

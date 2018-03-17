@@ -7,6 +7,7 @@ import PendingFeeItem from "../item/pendingDonationItems/pendingFeeItem";
 import PendingPairItem from "../item/pendingDonationItems/pendingPairItem";
 import PendingPaymentItem from "../item/pendingDonationItems/pendingPaymentItem";
 import NoPendingDonation from "../item/pendingDonationItems/noPendingDonation";
+import DemoModeInfo from "../item/DemoModeInfo";
 
 let routes = require('../routes/routes');
 let mainRoute = routes.main.link;
@@ -70,7 +71,7 @@ export default class HomeLandingSection extends Component {
                 catch (err) {
                 }
 
-                alert(error);
+                alert(`ERROR: ${error}`);
             })
     }
 

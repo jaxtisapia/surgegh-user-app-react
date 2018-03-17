@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Loadable from "react-loading-overlay";
+import DemoModeInfo from "../item/DemoModeInfo";
 
 let dbController = require("../controllers/database/controllers");
 let getInvestmentPackages = dbController.getInvestmentPackages;
@@ -93,7 +94,7 @@ export default class InvestSection extends Component {
 
         // check if number is valid
         if (isValidPhone(this.state.phone)){
-            alert("Mobile Money Number is invalid. Please use a number with the format 0XXXXXXXXX");
+            alert("ERROR: Mobile Money Number is invalid. Please use a number with the format 0XXXXXXXXX");
             this.deactivateLoading();
             return;
         }
@@ -104,7 +105,10 @@ export default class InvestSection extends Component {
 
         backendCreateDonation(momoNo, momoChannel, investmentID).then((response) => {
             this.deactivateLoading();
-            alert("Investment created successfully!!");
+            (dbController.getDemoMode())? alert("SUCCESS: Donation created successfully. Since we are running in Demo Mode, " +
+                "you wont receive any SMS Invoice. We will simulate you paid, or didn't pay. We do this to help Surgers familiarize " +
+                "with the sytem before we move into LIVE MODE. Please check your email for updates. Happy Surging!!"):
+            alert("SUCCESS: Donation created successfully!!");
         }).catch((err)=> {
             this.deactivateLoading();
 
@@ -116,7 +120,7 @@ export default class InvestSection extends Component {
             catch (err) {
             }
 
-            alert(error);
+            alert(`ERROR: ${error}`);
         });
 
         console.log({ phone: this.state.momoNo, network: this.state.selectedNetwork.channel, investment: this.state.selectedInvestment.id })
@@ -129,6 +133,8 @@ export default class InvestSection extends Component {
                 <div className="uk-card uk-card-default uk-card-body uk-margin-medium-top uk-width-1-2@m">
 
                     <h1 className="uk-heading-line uk-text-center"><span className='thin-text'>Donate Now</span></h1>
+
+                    {(dbController.getDemoMode()) ? <DemoModeInfo/> : null}
 
                     <form className="uk-form-stacked">
 

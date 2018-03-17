@@ -71,8 +71,8 @@ export default class SubmitIssueSection extends Component {
 
         contactAdministrator(subject, email, phone, content).then((response)=> {
             this.deactivateLoading();
-            this.setState({ subject:"", content:"" })
-            alert("Successfully sent report!");
+            this.setState({ subject:"", content:"" });
+            alert("SUCCESS: Successfully sent report!");
         }).catch((err)=> {
             this.deactivateLoading();
 
@@ -84,7 +84,7 @@ export default class SubmitIssueSection extends Component {
             catch (err) {
             }
 
-            alert(error);
+            alert(`ERROR: ${error}`);
         })
     }
 

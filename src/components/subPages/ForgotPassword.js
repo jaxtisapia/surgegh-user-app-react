@@ -38,7 +38,8 @@ export default class ForgotPassword extends Component{
     retrieveUserPassword(e){
         e.preventDefault();
 
-        this.activateLoading()
+        // this.activateLoading()
+        alert("ERROR: Retrieving passwords have been temporarily disabled by the administrator. Please contact moderators at surgeghana.new@gmail.com");
     }
 
     render(){

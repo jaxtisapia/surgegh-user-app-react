@@ -15,9 +15,9 @@ export default class PendingFeeItem extends Component{
 
                 <div className="uk-flex uk-flex-center">
 
-                    <button className="uk-button bg-ash-two uk-width-1-1">
-                        Report Issue
-                    </button>
+                    {/*<button className="uk-button bg-ash-two uk-width-1-1">*/}
+                        {/*Report Issue*/}
+                    {/*</button>*/}
                 </div>
 
             </div>

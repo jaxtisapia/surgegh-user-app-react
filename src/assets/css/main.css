@@ -117,3 +117,8 @@ body{
     margin-top: 20px;
     margin-bottom: 20px;
 }
+
+.nav-route-item{
+    font-size: 1.5em;
+    text-decoration: underline;
+}
